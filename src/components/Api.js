@@ -1,17 +1,14 @@
-import axios from 'axios'
-
-export const instance = axios.create({
-    baseURL: "https://api.punkapi.com/v2"
+import { create } from 'axios'
+export const instance = create({
+    baseURL: `${process.env.REACT_APP_API_BASE_URL}`
 })
-
-export const axiosGet = async (pageNext, noOfPost, date, abv, id,beerName,yeast) => {
+export const beerService = async (apiFilter, currentPage) => {
+    const { id, beerName, yeast, date, abv } = apiFilter;
     const idQueryString = id ? `&ids=${id}` : ""
     const yeastQueryString = yeast ? `&yeast=${yeast}` : ""
     const beerQueryString = beerName ? `&beer_name=${beerName}` : ""
     const dateQueryString = date ? `&brewed_after=${date}` : ""
     const abvQueryString = abv ? `&abv_gt=${abv}` : ""
-    const url = `/beers?page=${pageNext}&per_page=${noOfPost}${dateQueryString}${abvQueryString}${beerQueryString}${idQueryString}${yeastQueryString}`
-    const request=await instance.get(url)
-    return request.data
-
+    const url = `/beers?page=${currentPage}&per_page=${apiFilter.noOfPost}${dateQueryString}${abvQueryString}${beerQueryString}${idQueryString}${yeastQueryString}`
+    return await instance.get(url)
 }

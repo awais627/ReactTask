@@ -1,62 +1,43 @@
 import React from 'react'
-
-const ApiRender = ({post, ReactPaginate, pageNo, handlePageClick}) => {
+import './Table.css'
+const Table = ({ currentPage, post, setCurrentPage }) => {
+    const tableHead= ['ID', 'Name', 'Tagline', 'First Brewed', 'Description', 'Abv', 'Yeast', 'Image'];
     return (
         <>
             <div className='container mb-5'>
                 <table className="table">
                     <thead>
-                        <tr className='text-center'>
-                            <th scope="col">#ID
-                            </th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Tagline</th>
-                            <th scope="col">First Brewed</th>
-                            <th scope="col">Description</th>
-                            <th scope='col'>Abv</th>
-                            <th scope='col'>Yeast</th>
-                            <th scope="col">Image</th>
-                        </tr>
+                        {
+                            tableHead.map((item) =>
+                                <th scope="col">{item}</th>
+                            )
+                        }
                     </thead>
                     <tbody>
                         {
-                            post.map(post => (
-                                <tr key={post.id}>
-                                    <td>{post.id}</td>
-                                    <td>{post.name}</td>
-                                    <td>{post.tagline}</td>
-                                    <td>{post.first_brewed}</td>
-                                    <td>{post.description}</td>
-                                    <td>{post.abv}</td>
-                                    <td>{post.ingredients.yeast}</td>
-                                    <td><img src={post.image_url} alt="" width="30%" /></td>
+                            post.map(({ id, name, tagline, first_brewed, description,ingredients, image_url, abv }) =>
+                            (
+                                <tr key={id}>
+                                    <td>{id}</td>
+                                    <td>{name}</td>
+                                    <td>{tagline}</td>
+                                    <td>{first_brewed}</td>
+                                    <td>{description}</td>
+                                    <td>{abv}</td>
+                                    <td>{ingredients.yeast}</td>
+                                    <td><img src={image_url} alt="" width="30%" /></td>
                                 </tr>
                             ))
                         }
                     </tbody>
                 </table>
-                <ReactPaginate
-                    previousLabel={'Previous'}
-                    nextLabel={'Next'}
-                    pageCount={pageNo}
-                    marginPagesDisplayed={0}
-                    pageRangeDisplayed={0}
-                    onPageChange={handlePageClick}
-                    containerClassName={'pagination justify-content-center'}
-                    pageClassName={'page-item'}
-                    pageLinkClassName={'page-link'}
-                    previousClassName={'page-item'}
-                    previousLinkClassName={'page-link'}
-                    nextClassName={'page-item'}
-                    nextLinkClassName={'page-link'}
-                    breakClassName={'page-item'}
-                    breakLinkClassName={'page-link'}
-                    activeClassName={'active'}
-
-                />
+                <div className='d-flex justify-content-center'>
+                    <button type="button" onClick={() => setCurrentPage(currentPage - 1)} name="decrement" disabled={currentPage === 1} className="btn btn-primary">Previous</button>
+                    <span className='currentPage'>{currentPage}</span>
+                    <button type="button" onClick={() => setCurrentPage(currentPage + 1)} name="increment" className="btn btn-success">Next</button>
+                </div>
             </div>
         </>
     )
 }
-
-export default ApiRender
+export default Table
