@@ -1,21 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Table.css'
 const Table = ({ currentPage, post, setCurrentPage }) => {
-    const tableHead= ['ID', 'Name', 'Tagline', 'First Brewed', 'Description', 'Abv', 'Yeast', 'Image'];
+    const tableHead = ['ID', 'Name', 'Tagline', 'First Brewed', 'Description', 'Abv', 'Yeast', 'Image'];
     return (
         <>
             <div className='container mb-5'>
                 <table className="table">
                     <thead>
-                        {
-                            tableHead.map((item) =>
-                                <th scope="col">{item}</th>
-                            )
-                        }
+                        <tr>
+                            {
+
+                                tableHead.map((item, i) =>
+                                    <th key={i} scope="col">{item}</th>
+                                )
+                            }
+                        </tr>
                     </thead>
                     <tbody>
                         {
-                            post.map(({ id, name, tagline, first_brewed, description,ingredients, image_url, abv }) =>
+                            post.map(({ id, name, tagline, first_brewed, description, ingredients, image_url, abv }) =>
                             (
                                 <tr key={id}>
                                     <td>{id}</td>
