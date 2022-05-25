@@ -17,8 +17,8 @@ const Table = ({ currentPage, post, setCurrentPage }) => {
         <table className="table">
           <thead>
             <tr>
-              {tableHead.map((item, i) => (
-                <th key={i} scope="col">
+              {tableHead.map((item, index) => (
+                <th key={`tableHead${index}`} scope="col">
                   {item}
                 </th>
               ))}

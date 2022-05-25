@@ -11,7 +11,7 @@ const Filters = ({ handleChange }) => {
             <DebounceInput
               className="form-control"
               debounceTimeout={500}
-              name="noOfPost"
+              name="postPerPage"
               onChange={handleChange}
             />
           </Col>
@@ -34,7 +34,7 @@ const Filters = ({ handleChange }) => {
               <DebounceInput
                 className="form-control"
                 name="date"
-                debounceTimeout={1500}
+                debounceTimeout={500}
                 onChange={handleChange}
               />
             </div>
@@ -58,7 +58,7 @@ const Filters = ({ handleChange }) => {
               <DebounceInput
                 className="form-control"
                 name="beerName"
-                debounceTimeout={1000}
+                debounceTimeout={500}
                 onChange={handleChange}
               />
             </div>
@@ -69,7 +69,7 @@ const Filters = ({ handleChange }) => {
               <DebounceInput
                 className="form-control"
                 name="yeast"
-                debounceTimeout={1000}
+                debounceTimeout={500}
                 onChange={handleChange}
               />
             </div>

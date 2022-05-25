@@ -11,8 +11,8 @@ const Home = () => {
     date: "",
     abv: "",
     id: "",
-    pageNo: 33,
-    noOfPost: 10,
+    endPage: 33,
+    postPerPage: 10,
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
