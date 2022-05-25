@@ -14,7 +14,6 @@ const Home = () => {
     pageNo: 33,
     noOfPost: 10,
   });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFilters({
@@ -24,8 +23,8 @@ const Home = () => {
   };
   useEffect(() => {
     (async () => {
-      const response = await getBeersService(filters, currentPage);
-      setPost(response.data);
+      const { data } = await getBeersService(filters, currentPage);
+      setPost(data);
     })();
   }, [filters, currentPage]);
   return (
