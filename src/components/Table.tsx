@@ -1,11 +1,11 @@
-import React, { FC } from "react";
+import React, { Dispatch, FC } from "react";
 import { IPostdata } from "./Api";
 import "./Table.css";
 
 interface ITableProps {
   currentPage: number;
   post: IPostdata[];
-  setCurrentPage: any;
+  setCurrentPage:Dispatch<React.SetStateAction<number>>
 };
 
 const tableHead = [

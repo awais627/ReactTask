@@ -1,8 +1,8 @@
-import React,{FC} from "react";
+import React,{ChangeEventHandler, FC} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { DebounceInput } from "react-debounce-input";
 type HandleChange={
-  handleChange:any;
+  handleChange:ChangeEventHandler<HTMLInputElement>;
 }
 const Filters:FC<HandleChange> = ({ handleChange }) => {
   return (
