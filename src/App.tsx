@@ -2,7 +2,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/Home";
 
-function App() {
+function App():JSX.Element{
   return (
     <div className="App">
       <Home />

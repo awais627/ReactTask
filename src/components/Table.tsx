@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { Dispatch, FC } from "react";
+import { IPostdata } from "./Api";
 import "./Table.css";
-const Table = ({ currentPage, post, setCurrentPage }) => {
-  const tableHead = [
-    "ID",
-    "Name",
-    "Tagline",
-    "First Brewed",
-    "Description",
-    "Abv",
-    "Yeast",
-    "Image",
-  ];
+
+interface ITableProps {
+  currentPage: number;
+  post: IPostdata[];
+  setCurrentPage:Dispatch<React.SetStateAction<number>>
+};
+
+const tableHead = [
+  "ID",
+  "Name",
+  "Tagline",
+  "First Brewed",
+  "Description",
+  "Abv",
+  "Yeast",
+  "Image",
+];
+
+const Table: FC<ITableProps> = ({ currentPage, post, setCurrentPage }) => {
   return (
     <>
       <div className="container mb-5">
