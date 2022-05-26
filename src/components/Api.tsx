@@ -1,8 +1,18 @@
-import { create } from "axios";
-export const instance = create({
+import axios, { AxiosInstance } from "axios";
+
+export const instance : AxiosInstance = axios.create({
   baseURL: `${process.env.REACT_APP_API_BASE_URL}`,
 });
-export const getBeersService = async (filters, currentPage) => {
+type filters={
+    beerName: String
+    yeast: String
+    date: String
+    abv: String 
+    id: String
+    endPage:String
+    postPerPage:String
+  }
+export const getBeersService = async (filters:filters, currentPage:number) => {
   const { id, beerName, yeast, date, abv, postPerPage } = filters;
   const idQueryString = id ? `&ids=${id}` : "";
   const yeastQueryString = yeast ? `&yeast=${yeast}` : "";

@@ -1,7 +1,10 @@
-import React from "react";
+import React,{FC} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { DebounceInput } from "react-debounce-input";
-const Filters = ({ handleChange }) => {
+type HandleChange={
+  handleChange:any;
+}
+const Filters:FC<HandleChange> = ({ handleChange }) => {
   return (
     <>
       <Container>

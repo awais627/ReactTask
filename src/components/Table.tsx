@@ -1,6 +1,22 @@
-import React, { useState } from "react";
+import React, { FC } from "react";
 import "./Table.css";
-const Table = ({ currentPage, post, setCurrentPage }) => {
+type Props = {
+  currentPage: number;
+  post: {
+    id: number;
+    name: string;
+    tagline: string;
+    first_brewed: string;
+    description: string;
+    ingredients: {
+      yeast: string;
+    };
+    image_url: string;
+    abv: string;
+  }[];
+  setCurrentPage: any;
+};
+const Table: FC<Props> = ({ currentPage, post, setCurrentPage }) => {
   const tableHead = [
     "ID",
     "Name",

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, ChangeEvent, useState } from "react";
 import Table from "./Table";
-import { getBeersService } from "./Api";
+import {getBeersService}  from "./Api";
 import Filters from "./Filters";
-const Home = () => {
+
+const Home: FC = () => {
   const [post, setPost] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({
@@ -11,10 +12,11 @@ const Home = () => {
     date: "",
     abv: "",
     id: "",
-    endPage: 33,
-    postPerPage: 10,
+    endPage: "33",
+    postPerPage: "10",
   });
-  const handleChange = (e) => {
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFilters({
       ...filters,
@@ -23,7 +25,7 @@ const Home = () => {
   };
   useEffect(() => {
     (async () => {
-      const { data } = await getBeersService(filters, currentPage);
+      const {data} = await getBeersService(filters, currentPage);
       setPost(data);
     })();
   }, [filters, currentPage]);
