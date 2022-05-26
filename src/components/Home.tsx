@@ -1,20 +1,22 @@
 import React, { FC, useEffect, ChangeEvent, useState } from "react";
 import Table from "./Table";
-import {getBeersService}  from "./Api";
+import {getBeersService, IFilters, IPostdata}  from "./Api";
 import Filters from "./Filters";
 
+const initialFilters = {
+  beerName: "",
+  yeast: "",
+  date: "",
+  abv: 0,
+  id: "",
+  endPage: "33",
+  postPerPage: "10",
+}
+
 const Home: FC = () => {
-  const [post, setPost] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [filters, setFilters] = useState({
-    beerName: "",
-    yeast: "",
-    date: "",
-    abv: "",
-    id: "",
-    endPage: "33",
-    postPerPage: "10",
-  });
+  const [post, setPost] = useState<IPostdata[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [filters, setFilters] = useState<IFilters>(initialFilters);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -23,12 +25,14 @@ const Home: FC = () => {
       [name]: value,
     });
   };
+
   useEffect(() => {
     (async () => {
-      const {data} = await getBeersService(filters, currentPage);
+      const data = await getBeersService(filters, currentPage);
       setPost(data);
     })();
   }, [filters, currentPage]);
+
   return (
     <div className="mt-5">
       <Filters handleChange={handleChange} />

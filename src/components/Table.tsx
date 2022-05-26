@@ -1,32 +1,25 @@
 import React, { FC } from "react";
+import { IPostdata } from "./Api";
 import "./Table.css";
-type Props = {
+
+interface ITableProps {
   currentPage: number;
-  post: {
-    id: number;
-    name: string;
-    tagline: string;
-    first_brewed: string;
-    description: string;
-    ingredients: {
-      yeast: string;
-    };
-    image_url: string;
-    abv: string;
-  }[];
+  post: IPostdata[];
   setCurrentPage: any;
 };
-const Table: FC<Props> = ({ currentPage, post, setCurrentPage }) => {
-  const tableHead = [
-    "ID",
-    "Name",
-    "Tagline",
-    "First Brewed",
-    "Description",
-    "Abv",
-    "Yeast",
-    "Image",
-  ];
+
+const tableHead = [
+  "ID",
+  "Name",
+  "Tagline",
+  "First Brewed",
+  "Description",
+  "Abv",
+  "Yeast",
+  "Image",
+];
+
+const Table: FC<ITableProps> = ({ currentPage, post, setCurrentPage }) => {
   return (
     <>
       <div className="container mb-5">
