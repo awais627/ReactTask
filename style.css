@@ -31,7 +31,7 @@
     padding: 1rem 1.7rem;
     color: white;
     font-weight: bold;
-    border: rgb(56, 197, 56);
-    background-color: rgb(56, 197, 56);
+    border: #00bf4a;
+    background-color:#00bf4a;
     cursor: pointer;
 }
