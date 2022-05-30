@@ -1,0 +1,36 @@
+.section1{
+    border: 3px solid red;
+}
+.section1-para{
+    text-align: center;
+    padding: 0rem 9rem 3rem 9rem;
+}
+.container{
+    max-width: 1300px;
+    padding-right: 0.75rem;
+    padding-right: var(--bs-gutter-x,.75rem);
+    padding-left: 0.75rem;
+    padding-left: var(--bs-gutter-x,.75rem);
+    margin-right: auto;
+    margin-left: auto;
+    line-height: 1.5rem;
+}
+.section2{
+    margin-top: 1rem;
+    border: 3px solid red;
+}
+.card{
+    padding: 0rem 3.5rem;
+}
+.section2-card{
+    margin: 3rem 0rem 1rem 0rem;
+    display: flex;
+    text-align: center;
+}
+.sec2-button{
+    padding: 1rem 1.7rem;
+    color: white;
+    font-weight: bold;
+    border: rgb(56, 197, 56);
+    background-color: rgb(56, 197, 56);
+}
